@@ -157,7 +157,7 @@ if (employers.length === 0) {
 
 console.log(`Sorting`)
 const sorted = _.orderBy(employers, ["category", "name", "id"]);
-const fileName = `lobbyist-employers-categories-${session}.json`
+const fileName = `lobbyist-employer-categories-${session}.json`
 console.log(`Saving to ${fileName}`);
 await Deno.writeTextFile(`./${fileName}`, JSON.stringify(sorted, null, 2));
 console.log(`All done`);
