@@ -102,7 +102,7 @@ const categories: Category[] = [
 const concurrency = 4
 const queue = new Queue({ concurrency })
 const employers: Employer[] = []
-const session = args.session ? +args.session : 2023
+const session = args.session ? +args.session : 2025
 
 async function scrapeLobbyistEmployersForCategory(category: Category): Promise<Employer> {
   console.log(`Scraping lobbyist employers categorized as "${category.name}"`)
