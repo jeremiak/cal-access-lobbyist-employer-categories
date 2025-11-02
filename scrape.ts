@@ -20,6 +20,10 @@ interface Category {
   id: string | undefined;
 }
 
+const headers = {
+  'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0) Gecko/20100101 Firefox/42.0'
+}
+
 const args = parse(Deno.args);
 const categories: Category[] = [
   {
@@ -107,7 +111,7 @@ const session = args.session ? +args.session : 2025
 async function scrapeLobbyistEmployersForCategory(category: Category): Promise<Employer> {
   console.log(`Scraping lobbyist employers categorized as "${category.name}"`)
   const url = `https://cal-access.sos.ca.gov/Lobbying/Employers/list.aspx?view=detail&id=${category.id}&session=${session}`
-  const response = await fetch(url)
+  const response = await fetch(url, { headers })
   const html = await response.text()
   const { status } = response
   const document: HTMLDocument | null = new DOMParser().parseFromString(
